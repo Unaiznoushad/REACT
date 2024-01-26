@@ -9,6 +9,7 @@ export default function App() {
   const [toDo, setToDo] = useState({
     enterAList: "",
     isChecked: false,
+    priority:"LOW"
   });
   const [toDos, setToDos] = useState([]);
 
@@ -25,19 +26,19 @@ export default function App() {
       toggle();
     }
   }
-  function toggledOption(){
-    console.log("toggle")
-    toggle()
-  }
+  // function toggledOption(){
+  //   console.log("toggle")
+  //   toggle()
+  // }
 
   function toggle() {
     if (toDo.enterAList !== "") {
       setToDos((prevData) => [
-        { text: toDo.enterAList, isChecked: false },
+        { text: toDo.enterAList, isChecked: false ,priority:toDo.priority},
         ...prevData,
       ]);
 
-      setToDo({ enterAList: "", isChecked: false });
+      setToDo({ enterAList: "", isChecked: false,priority:"LOW" });
     }
   }
 
@@ -77,11 +78,10 @@ function toggleCheckbox(index) {
             name="enterAList"
             value={toDo.enterAList}
           />
-          <select className="select">
-            <option>Priority</option>
-            <option onClick={toggledOption} className="first">First</option>
-            <option className="second-option">Second</option>
-            <option className="third-option">Third</option>
+          <select onChange={changing} name="priority" value={toDo.priority} className="select">
+            <option  className="first">HIGH</option>
+            <option className="second-option">MEDIUM</option>
+            <option className="third-option">LOW</option>
           </select>
         
         
@@ -98,7 +98,7 @@ function toggleCheckbox(index) {
               toDos={toDos}
               setToDos={setToDos}
               toggleCheckbox={() => toggleCheckbox(i)}
-              toggledOption={()=>toggledOption()}
+              
             />
           ))}
         </div>
