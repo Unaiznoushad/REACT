@@ -4,12 +4,14 @@ import "./index.css";
 import List from "./components/list";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+// import Tag from "./components/tagInput";
 
 export default function App() {
   const [toDo, setToDo] = useState({
     enterAList: "",
     isChecked: false,
-    priority:"LOW"
+    priority:"LOW",
+    tag:[]
   });
   const [toDos, setToDos] = useState([]);
 
@@ -34,11 +36,13 @@ export default function App() {
   function toggle() {
     if (toDo.enterAList !== "") {
       setToDos((prevData) => [
-        { text: toDo.enterAList, isChecked: false ,priority:toDo.priority},
+        { text: toDo.enterAList, isChecked: false ,priority:toDo.priority,tag:toDo.tag},
         ...prevData,
       ]);
+      // {tags}
+      
 
-      setToDo({ enterAList: "", isChecked: false,priority:"LOW" });
+      setToDo({ enterAList: "", isChecked: false,priority:"LOW" ,tag:[]});
     }
   }
 
@@ -59,6 +63,24 @@ function toggleCheckbox(index) {
 
     return updatedToDos;
   });
+}
+
+const [isTag, setIsTag] = useState(false)
+function contentVisibility() {
+    setIsTag(!isTag)
+}
+function handleKeyChange(event) {
+
+    if (event.key === "Enter") {
+
+        toDo.tag.push(event.target.value)
+        // setToDo(prevToDo=>{
+        //   [prevToDo,tag:event.target.value]
+        // })
+        event.target.value=''      
+    }
+    
+
 }
 
 
@@ -88,6 +110,18 @@ function toggleCheckbox(index) {
           <button className="btn" onClick={toggle}>
             +ADD
           </button>
+          <div className={isTag ? "blurred-background" : ""} >
+            <button onClick={contentVisibility}>TAG</button>
+
+            {isTag && <div className="non-blurred-background" >
+                <h4>ADD TAGS</h4>
+                <div className="tag-border" >
+                    <input onKeyDown={handleKeyChange} className="input-tag" type="text" placeholder="Name" />
+
+
+                </div>
+            </div>}
+        </div>
         </span>
         <div>
           {toDos.map((data, i) => (

@@ -103,6 +103,8 @@ export default function List({ data, index, toggleCheckbox, toDos, setToDos }) {
             onChange={() => toggleCheckbox(index)}
 
           />
+          {data.tag}
+          <span>&times;</span>
 
 
         </span>
