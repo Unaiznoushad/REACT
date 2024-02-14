@@ -103,7 +103,7 @@ export default function List({ data, index, toggleCheckbox, toDos, setToDos }) {
             onChange={() => toggleCheckbox(index)}
 
           />
-          {data.tag}
+          Tags: {data.tags.map((_tag) => (<span>{_tag.label}</span>))}
 
 
         </span>

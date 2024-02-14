@@ -4,44 +4,22 @@ import "./index.css";
 import List from "./components/TaskList";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import TodoInput from "./components/TodoInput/TodoInput";
 // import Tag from "./components/TagInput";
-import TagSelect from "./components/TagSelect/TagSelect";
+
 
 export default function App() {
-  const [toDo, setToDo] = useState({
-    enterAList: "",
-    isChecked: false,
-    priority: "LOW",
-    tag: []
-  });
+
   const [toDos, setToDos] = useState([]);
 
+  const [tagOptions, setTagOptions] = useState([{ label: "Personal task", value: "personalTask" }, { label: "office task", value: "officeTask" }])
 
 
-  function changing(event) {
-    const { name, value, type, checked } = event.target;
-    setToDo((prevState) => ({
-      ...prevState,
-      [name]: type === "checkbox" ? checked : value,
-    }));
-  }
-
-  function keyDown(event) {
-    if (event.keyCode === 13) {
-      toggle();
-    }
-  }
-
-  function toggle() {
-    if (toDo.enterAList !== "") {
-      setToDos((prevData) => [
-        { text: toDo.enterAList, isChecked: false, priority: toDo.priority, tag: toDo.tag },
-        ...prevData,
-      ]);
-
-
-      setToDo({ enterAList: "", isChecked: false, priority: "LOW", tag: [] });
-    }
+  const onNewTodoAdd = (newTodoData) => {
+    setToDos((prevData) => [
+      { text: newTodoData.todoText, isChecked: false, priority: newTodoData.priority, tags: newTodoData.tags },
+      ...prevData,
+    ]);
   }
 
   function toggleCheckbox(index) {
@@ -77,42 +55,18 @@ export default function App() {
     <DndProvider backend={HTML5Backend}>
       <div className="main">
         {/* <div className={isTag && "background-blurred"}> */}
-        <div >
-          <h1 className="heading">TODO APPLICATION</h1>
-          <span>
-            <input
-              className="inp"
-              type="text"
-              placeholder="Enter a list"
-              onKeyDown={keyDown}
-              onChange={changing}
-              name="enterAList"
-              value={toDo.enterAList}
-            />
-            <select onChange={changing} name="priority" value={toDo.priority} className="select">
-              <option className="first">HIGH</option>
-              <option className="second-option">MEDIUM</option>
-              <option className="third-option">LOW</option>
-            </select>
 
-
-            <button className="btn" onClick={toggle}>
-              +ADD
-            </button>
-          </span>
-
-        </div>
         {/* <Tag toDo={toDo} funct={tagFunction} setToDo={setToDo} />
          */}
 
-        <TagSelect setToDo={setToDos} toDo={toDo} />
+
         {/* <Tag toDo={toDo} funct={tagFunction} setToDo={(neww) => {
           setToDo((prev) => {
             const newTodos = prev.tag.push(neww)
             return newTodos
           })
         }} /> */}
-
+        <TodoInput addTodo={onNewTodoAdd} tagOptions={tagOptions} setTagOptions={setTagOptions} />
         <div >
           {/* <div className={isTag && "background-blurred"}> */}
           {toDos.map((data, i) => (
