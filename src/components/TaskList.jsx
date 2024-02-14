@@ -104,7 +104,6 @@ export default function List({ data, index, toggleCheckbox, toDos, setToDos }) {
 
           />
           {data.tag}
-          <span>&times;</span>
 
 
         </span>

@@ -60,3 +60,16 @@ hr {
 .check {
   opacity: 0;
 }
+
+.tag-button {
+  display: inline-flex;
+}
+
+.background-blurred {
+  filter: blur(15px);
+}
+
+.tag-button {
+  filter: blur(15px);
+
+}
