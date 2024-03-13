@@ -2,49 +2,49 @@ import React from "react";
 import TagSelect from "../TagSelect/TagSelect";
 
 const TodoInput = (props) => {
+    // const [toDo, setToDo] = React.useState({
+    //     todoText: "",
+    //     isChecked: false,
+    //     priority: "LOW",
+    //     tags: []
+    // });
+    const { setToDo, toDo } = props
 
-
-    const [toDo, setToDo] = React.useState({
-        todoText: "",
-        isChecked: false,
-        priority: "LOW",
-        tags: []
-    });
-
-
-    const [tagValue, setTagValue] = React.useState();
 
     const resetInput = () => {
-        setToDo({ todoText: "", isChecked: false, priority: "LOW", tag: [] });
+        setToDo({ todoText: "", isChecked: false, priority: "LOW", tags: [] });
+        props.setTagValue([])
     }
 
     const onSubmit = () => {
-        props.addTodo({ ...toDo, tags: tagValue ? tagValue : [] })
+        props.addTodo({ ...toDo, tags: props.tagValue ? props.tagValue : [] })
         resetInput()
     }
 
     function onTextChange(event) {
-        const { name, value, type, checked } = event.target;
+        const { value } = event.target;
         setToDo((prevState) => ({
             ...prevState,
-            todoText: value,
+            todoText: value
         }));
     }
 
     function onPriorityChange(event) {
-        const { name, value, type, checked } = event.target;
+        const { value } = event.target;
         setToDo((prevState) => ({
             ...prevState,
             priority: value,
         }));
     }
 
-    function onTagSelection(newTags) {
-        setToDo((prevState) => ({
-            ...prevState,
-            tags: newTags,
-        }));
-    }
+
+    // function onTagSelection(newTags) {
+    //     setToDo((prevState) => ({
+    //         ...prevState,
+    //         tags: newTags,
+    //     }));
+
+    // }
 
     function keyDown(event) {
         if (event.keyCode === 13) {
@@ -54,29 +54,41 @@ const TodoInput = (props) => {
 
     return (
         <div >
-            <h1 className="heading">TODO APPLICATION</h1>
-            <span>
-                <input
-                    className="inp"
-                    type=""
-                    placeholder="Enter a list"
+            <h1 className="heading">Add new Todo</h1>
+            <div >
+                <h2 className="text-sub-heading">Text</h2>
+                <textarea
+                    name="todoText"
+                    id=""
+                    className="text-input"
+                    placeholder=" Enter your todo text here"
                     onKeyDown={keyDown}
                     onChange={onTextChange}
-                    name="todoText"
-                    value={toDo.todoText}
-                />
-                <select onChange={onPriorityChange} name="priority" value={toDo.priority} className="select">
-                    <option className="first">HIGH</option>
-                    <option className="second-option">MEDIUM</option>
-                    <option className="third-option">LOW</option>
-                </select>
-                <TagSelect onTagSelection={onTagSelection} toDo={toDo} tagOptions={props.tagOptions} setTagOptions={props.setTagOptions}
-                    value={tagValue} setValue={setTagValue} />
+                    value={toDo.todoText}>
+                </textarea>
+                <div className="tag-and-priority-div">
+                    <div className="priority-container">
+                        <h2 className="priority-sub-heading">Priority</h2>
+                        <select onChange={onPriorityChange} name="priority" value={toDo.priority} className="priority-select">
+                            <option className="first-option">HIGH</option>
+                            <option className="second-option">MEDIUM</option>
+                            <option className="third-option">LOW</option>
+                        </select>
 
-                <button className="btn" onClick={onSubmit}>
-                    +ADD
+                    </div>
+                    <div className="tag-container">
+                        <h2 className='tag-sub-heading'>Tags</h2>
+                        <TagSelect setToDo={setToDo} toDo={toDo} tagOptions={props.tagOptions} setTagOptions={props.setTagOptions}
+                            value={props.tagValue} setValue={props.setTagValue} />
+                    </div>
+
+
+                </div>
+
+                <button className="add-button" onClick={onSubmit}>
+                    Add Todo
                 </button>
-            </span>
+            </div>
         </div>
     )
 }

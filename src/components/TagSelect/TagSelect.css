@@ -1,4 +1,31 @@
-.tag-select-container {
-    width: 50%;
-    border: 1px solid red;
+.tag-select-container:focus {
+    border: none;
+    outline: none;
 }
+
+.tag-select-container {
+    /* background-color: red; */
+    /* color: black; */
+}
+
+.react-select__control {
+    /* background-color: aqua; */
+}
+
+.react-select-tag {
+    /* margin-left: 110px; */
+    /* border: 1px solid #C6C6C6; */
+    border-radius: 7px;
+    /* padding: 12px, 16px, 12px, 16px; */
+
+    font-size: 13px;
+    font-family: Poppins;
+    color: black;
+    font-weight: 500;
+    width: 362px;
+    /* background-color: red; */
+}
+
+/* .react-select-tag::placeholder {
+    color: black;
+} */
