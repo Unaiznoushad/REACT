@@ -2,27 +2,22 @@ import React from "react";
 import ReactModal from "react-modal";
 import { useState } from "react";
 
-export default function MySettings({ settingsNameChange, setSettingsNameChange }) {
+export default function MySettings({ settingsNameChange, settingsFunction }) {
     const [isOpen, setIsOpen] = useState(false);
     const openModal = () => setIsOpen(true);
     const closeModal = () => setIsOpen(false);
-    const [nameChangeValue, setNameChangeValue] = useState({
-        textName: ""
-    })
 
     function nameTextChange(event) {
-        setNameChangeValue((prevState) => ({ ...prevState, [event.target.name]: [event.target.value] }))
+        settingsFunction(event.target.value)
     }
     function onSubmit() {
-        setSettingsNameChange(nameChangeValue)
+        closeModal()
+    }
+    function onClose() {
+        settingsFunction('Unaiz Noushad')
         closeModal()
     }
 
-    React.useEffect(() => {
-        setNameChangeValue({
-            textName: settingsNameChange
-        })
-    })
     return (
         <div>
             <div className="settings-container">
@@ -33,17 +28,21 @@ export default function MySettings({ settingsNameChange, setSettingsNameChange }
                 </svg>
                 <h4 className="settings" onClick={openModal}>My Settings</h4>
             </div>
-            <ReactModal isOpen={isOpen}>
-                <svg className="svgg" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#434343" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
-                    <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
-                    <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
-                </svg>
-                <p>Name</p>
-                <textarea onChange={nameTextChange} name="textName" value={nameChangeValue.textName} id="" ></textarea>
-                <button onClick={onSubmit} >Submit</button>
-                <button onClick={closeModal}>Close</button>
+            <ReactModal isOpen={isOpen} className="settings-modal-container" style={{ overlay: { backgroundColor: "rgb(0,0,0,0.5)" } }}>
+                <div className="svg-name-text-modal-container">
+                    <svg className="modal-svg-profile" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="400" height="35" viewBox="0 0 24 24" stroke-width="1.5" stroke="#434343" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                        <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                        <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
+                        <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
+                        <path d="M6.168 18.849a4 4 0 0 1 3.832 -2.849h4a4 4 0 0 1 3.834 2.855" />
+                    </svg>
+                    <p className="settings-modal-heading">Name</p>
+                    <textarea onChange={nameTextChange} value={settingsNameChange} className="settings-textarea-modal" id="" ></textarea>
+                </div>
+                <div className="settings-submit-close-button-container">
+                    <button className="settings-submit-button" onClick={onSubmit} >Submit</button>
+                    <button className="settings-close-button" onClick={onClose}>Close</button>
+                </div>
             </ReactModal>
         </div>
 

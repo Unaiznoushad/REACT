@@ -2,23 +2,16 @@ import React from "react";
 import TagSelect from "../TagSelect/TagSelect";
 
 const TodoInput = (props) => {
-    // const [toDo, setToDo] = React.useState({
-    //     todoText: "",
-    //     isChecked: false,
-    //     priority: "LOW",
-    //     tags: []
-    // });
     const { setToDo, toDo } = props
-
-
     const resetInput = () => {
         setToDo({ todoText: "", isChecked: false, priority: "LOW", tags: [] });
         props.setTagValue([])
     }
-
     const onSubmit = () => {
-        props.addTodo({ ...toDo, tags: props.tagValue ? props.tagValue : [] })
-        resetInput()
+        if (toDo.todoText) {
+            props.addTodo({ ...toDo, tags: props.tagValue ? props.tagValue : [] })
+            resetInput()
+        }
     }
 
     function onTextChange(event) {
@@ -38,13 +31,6 @@ const TodoInput = (props) => {
     }
 
 
-    // function onTagSelection(newTags) {
-    //     setToDo((prevState) => ({
-    //         ...prevState,
-    //         tags: newTags,
-    //     }));
-
-    // }
 
     function keyDown(event) {
         if (event.keyCode === 13) {

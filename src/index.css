@@ -6,6 +6,12 @@
 
 @font-face {
   font-family: 'Poppins';
+  src: url(../assets/Poppins/Poppins-Bold.ttf) format("truetype");
+  font-weight: 700;
+}
+
+@font-face {
+  font-family: 'Poppins';
   src: url(../assets/Poppins/Poppins-Medium.ttf) format("truetype");
   font-weight: 500;
 }
@@ -14,121 +20,34 @@
   font-family: 'satoshi-variable';
   src: url(../assets/Satoshi_Complete/Fonts/OTF/Satoshi-Bold.otf) format("opentype");
   font-weight: 700;
+
 }
 
+@font-face {
+  font-family: 'satoshi-variable';
+  src: url(../assets/Satoshi_Complete/Fonts/OTF/Satoshi-Regular.otf) format("opentype");
+  font-weight: 400;
+
+}
+
+@font-face {
+  font-family: 'satoshi-variable';
+  src: url(../assets/Satoshi_Complete/Fonts/OTF/Satoshi-Medium.otf) format("opentype");
+  font-weight: 500;
+
+}
 
 body {
   margin: 0;
-  height: 100vh;
+  height: 100%;
   width: 100%;
 }
-
 
 .main-container {
   display: flex;
   height: 100vh;
-  /* background-color: #64ABFF; */
-
-}
-
-
-/* 
-@media (min-width:1366px) and (max-width:1599px) {
-  .main-container {
-    display: flex;
-    width: 100vw;
-    height: 78.6vh;
-  }
-
-  .first-section {
-    width: 200px;
-    padding: 20px;
-
-  }
-}
-
-@media (min-height:768px) and (max-height:900px) {
-  .main-container {
-    display: flex;
-    width: 100vw;
-    /* height: 100vh; */
-
-
-/* .first-section {
-  width: 200px;
-  padding: 20px;
-
-} */
-
-
-@media (min-width:1600px) and (max-width:1919px) {
-  .main-container {
-    display: flex;
-    width: 85.4vw;
-    height: 67.1vh;
-  }
-
-  .first-section {
-    width: 200px;
-    padding: 20px;
-
-  }
-}
-
-@media (min-width: 1920px) and (max-width:2559px) {
-  .main-container {
-    display: flex;
-    width: 71.2vw;
-    height: 55.9vh;
-  }
-
-  .first-section {
-    width: 200px;
-    padding: 20px;
-
-  }
-}
-
-@media (min-width:2560px) and (max-width:3199px) {
-  .main-container {
-    display: flex;
-    width: 53.4vw;
-    height: 37.72vh;
-  }
-
-  .first-section {
-    width: 200px;
-    padding: 20px;
-
-  }
-}
-
-@media (min-width:3200px)and (max-width:3839px) {
-  .main-container {
-    display: flex;
-    width: 42.7vw;
-    height: 33.54vh;
-  }
-
-  .first-section {
-    width: 200px;
-    padding: 20px;
-
-  }
-}
-
-@media (min-width:3840px) {
-  .main-container {
-    display: flex;
-    width: 35.6vw;
-    height: 27.98vh;
-  }
-
-  .first-section {
-    width: 200px;
-    padding: 20px;
-
-  }
+  width: 100%;
+  overflow: hidden;
 }
 
 .first-section {
@@ -136,7 +55,6 @@ body {
   flex: 1;
   display: flex;
   flex-direction: column;
-  padding: 20px;
   border: 1px solid #ccc;
 
 }
@@ -145,104 +63,60 @@ body {
   color: rgb(119, 112, 112);
   width: 400px;
   flex: 3;
-  /* padding: 20px; */
-  border: 1px solid #ccc;
-  /* white-space: nowrap;
-  text-overflow: ellipsis; */
-
-  overflow: scroll;
-  /* scroll-behavior: smooth; */
-  /* flex-wrap: wrap; */
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .third-section {
   flex: 2;
-  /* width: 300px; */
-
-  padding: 20px;
   border: 1px solid #ccc;
-  /* overflow:; */
-  /* word-wrap: break-word; */
   word-break: break-all;
-
+  height: 100%;
 }
 
 .just-todo-container {
   display: flex;
   flex-direction: row;
   height: 5%;
-  /* background-color: brown; */
   justify-content: flex-start;
   align-items: center;
 }
 
 .todo-logo {
-  /* margin-left: 2px; */
   width: 20px;
   height: 20px;
 }
 
 .just-todo-class {
-  /* margin-top: -25px; */
-  /* margin-left: 22px; */
   font-family: Satoshi-Variable;
   font-size: 17px;
   font-weight: 700;
-  /* line-height: 27px; */
-  /* text-align: left; */
-
 }
 
 .profile-container {
   display: flex;
   flex-direction: row;
-  /* background-color: chocolate; */
   width: 100%;
-  height: 15%;
-
+  height: 10%;
   justify-content: flex-start;
-  align-items: center;
-
+  align-items: flex-end;
 }
-
 
 .profile-name {
   font-family: Poppins;
   font-size: 15px;
   font-weight: 400;
-  /* width: 50%; */
-  /* display: inline-flex; */
-  /* align-items: flex-end;
-  justify-content: flex-end; */
-  /* line-height: 24px; */
-  /* text-align: le; */
-  /* margin-top: -3px; */
-  /* margin-left: -45px; */
   color: #434343;
-  /* background-color: aqua; */
-
-}
-
-.svgg {
-  /* width: 100%; */
-  /* align-items: flex-start;
-  justify-content: flex-start; */
-  /* background-color: #434343; */
+  margin-bottom: 0px;
 }
 
 .settings-container {
   display: flex;
   flex-direction: row;
   width: 100%;
-  height: 4%;
-  /* align-items: flex-start; */
-  /* justify-content: center; */
-  margin-top: -10px;
+  height: 60%;
   justify-content: flex-start;
   align-items: center;
-  /* background-color: aqua; */
-
-
 }
 
 
@@ -250,20 +124,13 @@ body {
   font-family: Poppins;
   font-size: 17px;
   font-weight: 400;
-  /* line-height: 30px; */
-  /* text-align: left; */
-  /* margin-top: -28.5px; */
-  /* margin-left: 28px; */
   color: #434343;
-  ;
-
+  cursor: pointer;
 }
 
 .first-section-tags-container {
-  /* margin: 0%; */
   display: flex;
   flex-direction: column;
-  /* height: 50%; */
   margin-top: 100px;
 }
 
@@ -273,11 +140,9 @@ body {
   font-weight: 700;
   text-align: left;
   margin-bottom: 23px;
-  /* background-color: red; */
 }
 
 .tagAlignLeftClass {
-  /* padding: 4px; */
   font-family: Poppins;
   display: flex;
   flex-direction: row;
@@ -288,6 +153,18 @@ body {
   margin-top: -2px;
 }
 
+.app-made-class {
+  font-family: Poppins;
+  font-size: 9px;
+  font-weight: 400;
+  line-height: 10px;
+  letter-spacing: 0em;
+  text-align: left;
+  color: #434343;
+  margin-top: 610px;
+  position: fixed;
+
+}
 
 .heading {
   padding: 20px 0px 0px 20px;
@@ -295,27 +172,17 @@ body {
   font-size: 20px;
   font-weight: 700;
   margin: 0;
-  /* line-height: 32px; */
   text-align: left;
   color: black;
-  /* margin-top: -20px; */
-  /* margin-left: -7px; */
-
 }
 
 .text-sub-heading {
   font-family: Poppins;
   font-size: 17px;
   font-weight: 500;
-  /* line-height: 30px; */
-  /* letter-spacing: 0em; */
   text-align: left;
   color: black;
   padding: 0px 0px 0px 20px;
-
-
-  /* margin-top: -2px; */
-
 }
 
 .text-input {
@@ -324,6 +191,7 @@ body {
   width: 565px;
   resize: none;
   font-family: Poppins;
+  font-weight: 400;
   height: 65px;
   font-size: 14px;
   /* text-align: left; */
@@ -340,11 +208,9 @@ body {
   color: #C6C6C6;
 }
 
-
 .tag-and-priority-div {
   display: flex;
   width: 100%;
-
   align-items: center;
   justify-content: center;
   padding: 0px 0px 0px 20px;
@@ -373,10 +239,6 @@ body {
   box-sizing: content-box;
   /* text-align; */
   -webkit-padding-start: 6px;
-  /* -webkit-padding-start: -10px; */
-  /* -moz-: 10px; */
-  /* padding: 12px, 20px, 12px, 30px; */
-  /* margin: 12px, 20px, 12px, 20px; */
   border-radius: 6px;
   font-size: 12px;
   font-family: Poppins;
@@ -384,13 +246,8 @@ body {
   font-weight: 500;
   height: 35px;
   width: 87px;
-  background-color: transparent;
-
+  background-color: #FFFFFF;
 }
-
-
-
-
 
 .tag-container {
   width: 60%;
@@ -401,7 +258,6 @@ body {
   align-items: flex-start;
   margin-right: 40px;
   margin-left: -42px;
-  /* background-color: aqua; */
 }
 
 .tag-sub-heading {
@@ -410,11 +266,8 @@ body {
   font-weight: 500;
   text-align: left;
   color: black;
-
   width: 80px;
-
 }
-
 
 .add-button {
   display: block;
@@ -435,15 +288,9 @@ body {
   outline: none;
 }
 
-
-
 hr {
   opacity: 30%;
-  /* margin-bottom: 0px; */
   margin: 0;
-  /* width: 100vw; */
-  /* color: aqua; */
-  /* margin-left: -20px !important; */
 }
 
 .checkbox {
@@ -454,7 +301,27 @@ hr {
 .tag-rendering-container {
   margin: 5px 0px 10px 46px;
   display: flex;
-  /* background-color: coral; */
+}
+
+.todos-sub-heading {
+  font-family: Satoshi-Variable;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0em;
+  text-align: left;
+  color: black;
+  padding: 0px 0px 0px 20px;
+
+}
+
+.text-and-checkbox-container {
+  font-family: satoshi-variable;
+  display: flex;
+  flex-direction: row;
+  color: black;
+  font-size: 15px;
+  font-weight: 700;
+  padding: 7px 0px 0px 20px;
 }
 
 .tag {
@@ -464,66 +331,26 @@ hr {
   font-weight: 700;
   font-size: 11px;
   color: #7A7A7A;
-
   border: 1px solid #64ABFF;
   padding: 2px 3px 2px 3.5px;
   border-radius: 4px;
   margin-right: 3px;
   height: 13px;
-  /* background-color: brown; */
-  /* flex-direction: column; */
-
-}
-
-.tag-third-section-container {
-  display: flex;
-}
-
-.list-item-clicked {
-  background-color: #F2F2F2;
-
-  /* height: 55px; */
-
 }
 
 .list-item {
   background-color: white;
-  /* margin: 0px; */
   white-space: nowrap;
   text-overflow: ellipsis;
-
   overflow: hidden;
-  /* overflow: hidden; */
-
-  /* width: 400px; */
 }
 
 
-.text-and-checkbox-container {
 
-  font-family: satoshi-variable;
+
+
+.tag-third-section-container {
   display: flex;
-  flex-direction: row;
-  color: black;
-  font-size: 15px;
-  font-weight: 700;
-  padding: 7px 0px 0px 20px;
-
-  /* margin-right: 5px; */
-}
-
-.todos-sub-heading {
-  font-family: Satoshi-Variable;
-  font-size: 20px;
-  font-weight: 700;
-  /* line-height: 32px; */
-  letter-spacing: 0em;
-  text-align: left;
-  color: black;
-  padding: 0px 0px 0px 20px;
-
-  /* background-color: aqua; */
-
 }
 
 .todo-details {
@@ -531,12 +358,15 @@ hr {
   font-size: 20px;
   font-weight: 700;
   margin: 0;
+  padding: 20px 0px 0px 20px;
 }
 
 .todo-details-text {
   font-family: Satoshi-Variable;
+  font-weight: 400;
   font-size: 16px;
-  font-weight: 100;
+  padding: 0px 0px 0px 20px;
+
 }
 
 .todo-details-tag {
@@ -551,6 +381,696 @@ hr {
   color: #7A7A7A;
   border: 1px solid #64ABFF;
   padding: 2px 3px 2px 3.5px;
+  margin-left: 20px;
   border-radius: 4px;
   margin-right: 3px;
+}
+
+.task-edit-and-task-delete-container {
+  display: flex;
+  height: 78%;
+  justify-content: right;
+  align-items: flex-end;
+  margin-right: 20px;
+}
+
+.task-first-delete-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+  font-family: Satoshi-Variable;
+  font-size: 12px;
+  font-weight: 500;
+  color: #ff2825;
+  width: 70px;
+  height: 25px;
+  padding: 17px, 10px, 17px, 10px;
+  border-radius: 4px;
+  border: 1px solid #ff2825;
+  background-color: transparent;
+  gap: 4px;
+}
+
+.task-first-edit-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: Satoshi-Variable;
+  font-size: 12px;
+  font-weight: 500;
+  color: #0085BF;
+  width: 55px;
+  height: 25px;
+  padding: 17px, 10px, 17px, 10px;
+  gap: 4px;
+  border-radius: 4px;
+  border: 1px solid #0085BF;
+  background-color: transparent;
+}
+
+.task-edit-modal {
+  border: 2px solid #FBFBFB;
+  width: 40%;
+  min-height: 55vh;
+  margin: 120px 0px 0px 350px;
+  background-color: #FBFBFB;
+  border-radius: 13px;
+  padding: 1em;
+}
+
+.task-edit-text-input {
+  border: 1px solid #C6C6C6;
+  border-radius: 7px;
+  width: 490px;
+  resize: none;
+  font-family: Poppins;
+  height: 70px;
+  font-size: 14px;
+  color: black;
+  margin: 0px 0px 0px 20px;
+  padding: 10px 0px 0px 10px;
+}
+
+.task-edit-heading {
+  padding: 20px 0px 0px 20px;
+  font-family: Satoshi-Variable;
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0;
+  text-align: left;
+  color: black;
+}
+
+.task-edit-tag-container {
+  width: 60%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  margin-right: 80px;
+}
+
+.tag-sub-heading-edit-modal {
+  font-family: Poppins;
+  font-size: 17px;
+  font-weight: 500;
+  text-align: left;
+  color: black;
+  width: 80px;
+}
+
+.react-select-tag-edit-modal {
+  border-radius: 7px;
+  font-size: 13px;
+  font-family: Poppins;
+  color: black;
+  font-weight: 500;
+  width: 362px;
+}
+
+.task-edit-save {
+  background-color: #323232;
+  color: #F7F7F7;
+  border: none;
+  width: 85px;
+  border-radius: 7px;
+  height: 35px;
+  font-family: Satoshi-Variable;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 25px 0px 0px 20px;
+}
+
+.task-edit-cancel {
+  background-color: transparent;
+  color: #323232;
+  border: 1px solid #323232;
+  width: 85px;
+  border-radius: 7px;
+  height: 35px;
+  font-family: Satoshi-Variable;
+  font-size: 15px;
+  font-weight: 700;
+  margin: 25px 0px 0px 20px;
+}
+
+.task-delete-modal {
+  border: 2px solid #FBFBFB;
+  width: 30%;
+  height: 19%;
+  margin: 230px 150px 50px 440px;
+  background-color: #FBFBFB;
+  border-radius: 13px;
+  padding: 20px 20px 20px 20px;
+}
+
+.task-delete-heading {
+  font-family: Satoshi-Variable;
+  font-size: 20px;
+  font-weight: 500;
+  display: flex;
+  justify-content: center;
+}
+
+.task-delete-and-cancel-button-container {
+  display: flex;
+  justify-content: center;
+}
+
+.task-delete-button {
+  background-color: #DB0000;
+  color: #F7F7F7;
+  border: none;
+  width: 85px;
+  border-radius: 7px;
+  height: 35px;
+  font-family: Satoshi-Variable;
+  font-size: 15px;
+  font-weight: 700;
+  margin-right: 10px;
+}
+
+.task-delete-cancel-button {
+  background-color: transparent;
+  color: #323232;
+  border: 1px solid #323232;
+  width: 85px;
+  border-radius: 7px;
+  height: 35px;
+  font-family: Satoshi-Variable;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.settings-modal-container {
+  border: 2px solid #FBFBFB;
+  width: 30%;
+  height: 30%;
+  margin: 200px 0px 0px 400px;
+  background-color: #FBFBFB;
+  border-radius: 13px;
+  padding: 20px 20px 20px 20px;
+}
+
+.svg-name-text-modal-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.modal-svg-profile {
+  display: flex;
+  background-color: #434343;
+}
+
+.settings-modal-heading {
+  font-family: Satoshi-Variable;
+  font-size: 20px;
+  font-weight: 500;
+  margin: 10px 0px 10px 10px;
+}
+
+.settings-textarea-modal {
+  border: 1px solid #C6C6C6;
+  border-radius: 7px;
+  width: 370px;
+  resize: none;
+  font-family: Poppins;
+  height: 50px;
+  font-size: 14px;
+  color: black;
+  margin: 0px 0px 0px 10px;
+  padding: 10px 0px 0px 10px;
+}
+
+.settings-submit-close-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 70px;
+}
+
+.settings-submit-button {
+  background-color: #323232;
+  color: #F7F7F7;
+  border: none;
+  width: 85px;
+  border-radius: 7px;
+  height: 35px;
+  font-family: Satoshi-Variable;
+  font-size: 15px;
+  font-weight: 700;
+  margin-right: 15px;
+}
+
+.settings-close-button {
+  background-color: transparent;
+  color: #323232;
+  border: 1px solid #323232;
+  width: 85px;
+  border-radius: 7px;
+  height: 35px;
+  font-family: Satoshi-Variable;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+@media (min-width:1366px) and (max-width:1599px) {
+  .first-section {
+    width: 200px;
+    padding: 20px;
+  }
+
+  .profile-container {
+    height: 8%;
+  }
+
+  .first-section-tags-container {
+    margin-top: 120px;
+  }
+
+  .app-made-class {
+    margin-top: 720px;
+    position: fixed;
+  }
+
+  .add-button {
+    margin-top: 30px;
+  }
+
+  .todos-sub-heading {
+    margin-top: 40px;
+  }
+
+  .task-edit-and-task-delete-container {
+    height: 81%;
+  }
+}
+
+@media (min-width:1600px) and (max-width:1919px) {
+  .first-section {
+    width: 200px;
+    padding-left: 30px;
+    padding-top: 20px;
+  }
+
+  .second-section {
+    padding-top: 5px;
+    padding-left: 15px;
+  }
+
+  .third-section {
+    padding-left: 10px;
+  }
+
+  .profile-container {
+    height: 5%;
+  }
+
+  .settings-container {
+    height: 70%;
+  }
+
+  .first-section-tags-container {
+    margin-top: 160px;
+  }
+
+  .text-input {
+    width: 660px;
+    height: 9vh;
+  }
+
+  .add-button {
+    margin-top: 30px;
+  }
+
+  .react-select-tag {
+    min-width: 410px;
+  }
+
+  .todos-sub-heading {
+    margin-top: 50px;
+  }
+
+  .task-edit-modal {
+    min-height: 41vh;
+    width: 35%;
+    margin: 250px 0px 0px 480px;
+  }
+
+  .task-delete-modal {
+    width: 25%;
+    height: 15%;
+    margin: 340px 0px 0px 550px;
+  }
+
+  .settings-modal-container {
+    width: 26%;
+    height: 23%;
+    margin: 310px 0px 0px 550px;
+  }
+
+  .task-edit-and-task-delete-container {
+    height: 85%;
+  }
+
+  .app-made-class {
+    margin-top: 840px;
+    position: fixed;
+  }
+}
+
+@media (min-width: 1920px) and (max-width:2559px) {
+  .main-container {
+    display: flex;
+    overflow: hidden;
+  }
+
+  .first-section {
+    padding-left: 30px;
+    padding-top: 25px;
+  }
+
+  .second-section {
+    padding-top: 20px;
+    padding-left: 15px;
+  }
+
+  .third-section {
+    padding-top: 20px;
+    padding-left: 15px;
+  }
+
+  .profile-container {
+    display: flex;
+    height: 5%;
+  }
+
+  .settings-container {
+    height: 100%;
+  }
+
+  .first-section-tags-container {
+    margin-top: 150px;
+  }
+
+  .text-input {
+    width: 800px;
+    height: 9vh;
+  }
+
+  .react-select-tag {
+    min-width: 480px;
+  }
+
+  .add-button {
+    margin-top: 20px;
+  }
+
+  .todos-sub-heading {
+    margin-top: 50px;
+  }
+
+  .task-edit-modal {
+    min-height: 35vh;
+    width: 30%;
+    margin: 300px 0px 0px 580px;
+  }
+
+  .react-select-tag-edit-modal {
+    margin-left: -20px;
+    width: 400px;
+  }
+
+  .task-edit-text-input {
+    width: 520px;
+  }
+
+  .tag-sub-heading-edit-modal {
+    margin-left: -20px;
+  }
+
+  .task-delete-modal {
+    width: 20%;
+    height: 12%;
+    margin: 400px 0px 0px 670px;
+  }
+
+  .settings-modal-container {
+    width: 21.5%;
+    height: 19%;
+    margin: 380px 0px 0px 700px;
+  }
+
+  .task-edit-and-task-delete-container {
+    height: 85%;
+  }
+
+  .app-made-class {
+    margin-top: 1010px;
+    position: fixed;
+  }
+}
+
+@media (min-width:2560px) and (max-width:3199px) {
+  .first-section {
+    width: 200px;
+    padding-left: 30px;
+    padding-top: 20px;
+  }
+
+  .second-section {
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+  .third-section {
+    padding-left: 20px;
+    padding-top: 20px;
+  }
+
+  .profile-container {
+    display: flex;
+    height: 2%;
+  }
+
+  .settings-container {
+    height: 90%;
+  }
+
+  .first-section-tags-container {
+    margin-top: 210px;
+  }
+
+  .text-input {
+    width: 1100px;
+    height: 8vh;
+  }
+
+  .react-select-tag {
+    min-width: 665px;
+  }
+
+  .add-button {
+    margin-top: 30px;
+  }
+
+  .todos-sub-heading {
+    margin-top: 50px;
+  }
+
+  .task-edit-modal {
+    min-height: 23vh;
+    width: 28%;
+    margin: 565px 0px 0px 730px;
+  }
+
+  .react-select-tag-edit-modal {
+    margin-left: -20px;
+    width: 475px;
+  }
+
+  .task-edit-text-input {
+    width: 650px;
+  }
+
+  .task-delete-modal {
+    width: 20%;
+    height: 9%;
+    margin: 600px 0px 0px 850px;
+  }
+
+  .settings-modal-container {
+    width: 16%;
+    height: 13%;
+    margin: 600px 0px 0px 900px;
+  }
+
+  .task-edit-and-task-delete-container {
+    height: 88%;
+  }
+
+  .app-made-class {
+    margin-top: 1500px;
+    position: fixed;
+  }
+}
+
+@media (min-width:3200px)and (max-width:3839px) {
+  .first-section {
+    padding-left: 20px;
+  }
+
+  .second-section {
+    padding-top: 5px;
+  }
+
+  .third-section {
+    padding-top: 5px;
+  }
+
+  .profile-container {
+    display: flex;
+    height: 2%;
+  }
+
+  .settings-container {
+    height: 90%;
+  }
+
+  .first-section-tags-container {
+    margin-top: 210px;
+  }
+
+  .text-input {
+    width: 1400px;
+    height: 8vh;
+  }
+
+  .react-select-tag {
+    min-width: 822px;
+  }
+
+  .add-button {
+    margin-top: 30px;
+  }
+
+  .todos-sub-heading {
+    margin-top: 50px;
+  }
+
+  .task-edit-modal {
+    min-height: 20.5vh;
+    width: 20%;
+    margin: 650px 0px 0px 1000px;
+  }
+
+  .react-select-tag-edit-modal {
+    width: 415px;
+  }
+
+  .task-edit-text-input {
+    width: 580px;
+  }
+
+  .task-delete-modal {
+    width: 13%;
+    height: 7%;
+    margin: 800px 0px 0px 1100px;
+  }
+
+  .settings-modal-container {
+    width: 12.8%;
+    height: 12%;
+    margin: 700px 0px 0px 1100px;
+  }
+
+  .task-edit-and-task-delete-container {
+    height: 90%;
+  }
+
+  .app-made-class {
+    margin-top: 1750px;
+    position: fixed;
+  }
+}
+
+@media (min-width:3840px) {
+  .first-section {
+    padding-left: 20px;
+  }
+
+  .second-section {
+    padding-top: 15px;
+  }
+
+  .third-section {
+    padding-top: 15px;
+  }
+
+  .profile-container {
+    display: flex;
+    height: 2%;
+  }
+
+  .settings-container {
+    height: 90%;
+  }
+
+  .first-section-tags-container {
+    margin-top: 210px;
+  }
+
+  .text-input {
+    width: 1700px;
+    height: 8vh;
+  }
+
+  .react-select-tag {
+    min-width: 995px;
+  }
+
+  .add-button {
+    margin-top: 30px;
+  }
+
+  .todos-sub-heading {
+    margin-top: 50px;
+  }
+
+  .task-edit-modal {
+    min-height: 17vh;
+    width: 20%;
+    margin: 650px 0px 0px 1000px;
+  }
+
+  .react-select-tag-edit-modal {
+    width: 490px;
+  }
+
+  .task-edit-text-input {
+    width: 710px;
+  }
+
+  .task-delete-modal {
+    width: 12%;
+    height: 6%;
+    margin: 1000px 0px 0px 1400px;
+  }
+
+  .settings-modal-container {
+    width: 10.5%;
+    height: 9.5%;
+    margin: 900px 0px 0px 1400px;
+  }
+
+  .task-edit-and-task-delete-container {
+    height: 92%;
+  }
+
+  .app-made-class {
+    margin-top: 2120px;
+    position: fixed;
+  }
 }

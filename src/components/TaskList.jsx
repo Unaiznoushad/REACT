@@ -1,7 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import { useDrag, useDrop } from "react-dnd";
-export default function TaskList({ data, index, toggleCheckbox, toDos, setToDos, tagValueFunction, setToDoDetailsCheck, clickState, details, toDoDetailsCheck, clickedIndexFunction }) {
+export default function TaskList({ data, index, toggleCheckbox, toDos, clickedIndex, setToDos, clickState, clickedIndexFunction }) {
   // console.log(tagValueFunction, "tagValueFunction")
 
   const isDraggable = !data.isChecked;
@@ -86,27 +86,20 @@ export default function TaskList({ data, index, toggleCheckbox, toDos, setToDos,
           <path d="M9 12l2 2l4 -4" />
         </svg>
         break
-
     }
-
   }
   function listItemsToggled(index) {
-    // setToDoDetailsCheck(!toDoDetailsCheck)
-    // if (!clicked) {
     setClicked(!clicked)
     clickState(!clicked)
     clickedIndexFunction(index)
-    // details(true)
-    // console.log(setToDoDetailsCheck, "setToDoDetailsCheck")
-    // data.tags.map((eachTag)=>)
-
-    // }
   }
 
+  let backgroundColor = index === clickedIndex ? "#F2F2F2" : ""
 
   return (
-    <div ref={(node) => isDraggable && drag(drop(node))} style={{ opacity }}>
-      <div onClick={() => listItemsToggled(index)} className={clicked ? "list-item-clicked" : "list-item"}>
+    <div ref={(node) => isDraggable && drag(drop(node))} style={{ opacity, backgroundColor }}>
+      <div onClick={() => listItemsToggled(index)}
+      >
 
         <div className="text-and-checkbox-container">
           {svgContent}
@@ -123,11 +116,6 @@ export default function TaskList({ data, index, toggleCheckbox, toDos, setToDos,
         <div className="tag-rendering-container">
           {data.tags.map((_tag) => (<span className="tag">{_tag.label}</span>))}
         </div>
-
-
-
-
-
         <hr />
       </div>
     </div >

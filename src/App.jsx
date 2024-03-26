@@ -26,7 +26,9 @@ export default function App() {
   const [clickedIndex, setClickedIndex] = useState(null)
   const [settingsNameChange, setSettingsNameChange] = useState('Unaiz Noushad')
 
-
+  function settingsFunction(param) {
+    setSettingsNameChange(param)
+  }
   function clickedIndexFunction(param) {
     setClickedIndex(param)
   }
@@ -52,26 +54,25 @@ export default function App() {
 
   const onNewTodoAdd = (newTodoData) => {
     setToDos((prevData) => [
-      { text: newTodoData.todoText, isChecked: false, priority: newTodoData.priority, tags: newTodoData.tags },
+      { text: newTodoData.todoText, isChecked: false, priority: newTodoData.priority, tags: newTodoData.tags, id: new Date().getTime() },
       ...prevData,
     ])
 
     tagUpdation(newTodoData)
   }
 
-
-  function toggleCheckbox(index) {
+  function toggleCheckbox(id) {
     setToDos((prevData) => {
       const updatedToDos = [...prevData];
-      const toggledTodo = { ...updatedToDos[index] }
+      const toggledTodo = { ...getTodoById(id, updatedToDos) }
 
       toggledTodo.isChecked = !toggledTodo.isChecked;
-
+      const positionIndex = updatedToDos.findIndex(_todo => _todo.id === clickedIndex)
       if (toggledTodo.isChecked) {
-        updatedToDos.splice(index, 1);
+        updatedToDos.splice(positionIndex, 1);
         updatedToDos.push(toggledTodo);
       } else {
-        updatedToDos.splice(index, 1)
+        updatedToDos.splice(positionIndex, 1)
         updatedToDos.unshift(toggledTodo)
       }
 
@@ -83,10 +84,17 @@ export default function App() {
   function clickState(param) {
     setToDoDetailsCheck(param)
   }
-
+  function getTodoById(_id, todoList) {
+    console.log("getTodoById", { _id, todoList })
+    const todosWithGivenId = todoList.filter((todo) => todo.id === _id)
+    if (todosWithGivenId.length > 0) {
+      return todosWithGivenId[0]
+    }
+    return null
+  }
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="main-container">
+      <div className='main-container'>
         <div className="first-section">
           <div className="just-todo-container">
             <img className="todo-logo" src={justTodoLogo} alt="" />
@@ -94,7 +102,7 @@ export default function App() {
           </div>
 
           <div className="profile-container">
-            <svg className="svgg" xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#434343" fill="none" stroke-linecap="round" stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-user-circle" width="20" height="20" viewBox="0 0 24 24" stroke-width="1.5" stroke="#434343" fill="none" stroke-linecap="round" stroke-linejoin="round">
               <path stroke="none" d="M0 0h24v24H0z" fill="none" />
               <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
               <path d="M12 10m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0" />
@@ -103,7 +111,7 @@ export default function App() {
             <h4 className="profile-name">{settingsNameChange}</h4>
           </div>
 
-          <MySettings setSettingsNameChange={setSettingsNameChange} settingsNameChange={settingsNameChange} />
+          <MySettings settingsFunction={settingsFunction} settingsNameChange={settingsNameChange} />
           <div className="first-section-tags-container">
             <h2 className="first-section-tags">Tags</h2>
             {tagOptions.map((taag) => <p className="tagAlignLeftClass">
@@ -113,6 +121,7 @@ export default function App() {
                 <path d="M3 6v5.172a2 2 0 0 0 .586 1.414l7.71 7.71a2.41 2.41 0 0 0 3.408 0l5.592 -5.592a2.41 2.41 0 0 0 0 -3.408l-7.71 -7.71a2 2 0 0 0 -1.414 -.586h-5.172a3 3 0 0 0 -3 3z" />
               </svg>{taag.label}</p>)}
           </div>
+          <p className="app-made-class">App made by Unaiz Noushad</p>
 
         </div>
         <div className="second-section">
@@ -125,15 +134,16 @@ export default function App() {
             {toDos.map((data, i) => (
               <TaskList
                 key={i}
-                index={i}
+                index={data.id}
                 data={data}
                 toDos={toDos}
                 setToDos={setToDos}
-                toggleCheckbox={() => toggleCheckbox(i)}
+                toggleCheckbox={() => toggleCheckbox(data.id)}
                 setToDoDetailsCheck={setToDoDetailsCheck}
                 toDoDetailsCheck={toDoDetailsCheck}
                 clickState={clickState}
                 clickedIndexFunction={clickedIndexFunction}
+                clickedIndex={clickedIndex}
               />
             ))}
 
@@ -144,19 +154,19 @@ export default function App() {
           {/* Change toDoDetailsCheck to toDoDetailsSelected */}
           {clickedIndex !== null ? <>
             <p className="todo-details">Todo Details</p>
-            <p className="todo-details-text">{toDos[clickedIndex].text}</p>
-            {toDos[clickedIndex].tags.map((_tag) => {
+            <p className="todo-details-text">{getTodoById(clickedIndex, toDos).text}</p>
+            {getTodoById(clickedIndex, toDos) ? getTodoById(clickedIndex, toDos).tags.map((_tag) => {
               return (
                 <span className="todo-details-tag" key={_tag.value}>{_tag.label}</span>
               )
-            })}
+            }) : null}
 
-            <div>
-              <TaskEdit toDo={toDo} tagUpdation={tagUpdation}
-                tagOptions={tagOptions} setToDos={setToDos}
-                toDos={toDos} clickedIndex={clickedIndex} />
+            <div className="task-edit-and-task-delete-container">
               <TaskDelete toDos={toDos} clickedIndex={clickedIndex}
                 setToDos={setToDos} setClickedIndex={setClickedIndex} />
+              <TaskEdit toDo={toDo} tagUpdation={tagUpdation}
+                tagOptions={tagOptions} setToDos={setToDos}
+                toDos={toDos} clickedIndex={clickedIndex} getTodoById={getTodoById} />
             </div>
           </> : null}
 
